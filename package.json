@@ -2,11 +2,13 @@
   "name": "ecommerce-platform-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "main": "dist/main.js",
+ "scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+  "build": "tsc",
+  "start": "node dist/main.js" 
+},
+ "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
