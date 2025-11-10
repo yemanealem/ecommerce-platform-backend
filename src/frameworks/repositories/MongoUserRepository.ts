@@ -22,4 +22,9 @@ export class MongoUserRepository implements IUserRepository {
     const user = await UserModel.findById(id);
     return user ? (user.toObject() as User) : null;
   }
+async findByEmailOrUsername(email: string, username: string): Promise<User | null> {
+  const user = await UserModel.findOne({ $or: [{ email }, { username }] });
+  return user ? (user.toObject() as User) : null;
+}
+
 }
