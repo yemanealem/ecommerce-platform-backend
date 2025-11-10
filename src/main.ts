@@ -1,20 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectDB from "./frameworks/db/mongo";
 
 dotenv.config();
 
 const app = express();
 
-// Middleware
+connectDB();
+
 app.use(express.json());
 
-// Root route
 app.get("/", (req, res) => {
-  res.json({ message: "E-commerce Platform Backend is running 🚀" });
+  res.send("Server is running with MongoDB connection!");
 });
 
-// Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
