@@ -12,6 +12,7 @@ export class ProductRepositoryImpl implements IProductRepository {
     const updated = await ProductModel.findByIdAndUpdate(productId, data, { new: true });
     return updated ? (updated.toObject() as Product) : null;
   }
+  
 
   async delete(productId: string): Promise<void> {
     await ProductModel.findByIdAndDelete(productId);

@@ -17,4 +17,5 @@ export class OrderRepositoryImpl implements IOrderRepository {
     const order = await OrderModel.findById(orderId);
     return order ? (order.toObject() as Order) : null;
   }
+  
 }
