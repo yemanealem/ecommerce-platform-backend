@@ -8,7 +8,8 @@ export class JWTService {
     return jwt.sign(payload, this.secret, { expiresIn: this.expiresIn });
   }
 
-  verifyToken(token: string): object | string {
-    return jwt.verify(token, this.secret);
+  verifyToken<T = object>(token: string): T {
+    return jwt.verify(token, this.secret) as T;
   }
+
 }

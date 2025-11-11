@@ -14,7 +14,7 @@ export class ResponseFormatter {
       errors: null,
     };
   }
-
+  
   static error(message: string, errors: string[] | null = null): BaseResponse<null> {
     return {
       success: false,
