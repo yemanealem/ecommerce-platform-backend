@@ -1,7 +1,9 @@
 import { Schema, model, Document } from "mongoose";
-import { UserRole } from "../../../entities/enums"
+import { UserRole } from "../../../entities/enums";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IUser extends Document {
+  _id: string;
   username: string;
   email: string;
   password: string;
@@ -12,6 +14,7 @@ export interface IUser extends Document {
 
 const userSchema = new Schema<IUser>(
   {
+    _id: { type: String, default: uuidv4 }, 
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },

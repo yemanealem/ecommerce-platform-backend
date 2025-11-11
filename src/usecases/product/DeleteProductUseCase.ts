@@ -3,7 +3,7 @@ import { IProductRepository } from "../../interfaces/repositories/IProductReposi
 export class DeleteProductUseCase {
   constructor(private productRepo: IProductRepository) {}
 
-  async execute(productId: string): Promise<void> {
+  async execute(productId: any): Promise<void> {
     const product = await this.productRepo.findById(productId);
     if (!product) throw new Error("Product not found");
 

@@ -8,7 +8,6 @@ import { validateLoginInput, validateRegisterInput } from '../../../utils/Valida
 import { ResponseFormatter } from '../../../utils/BasicResponseFormatter';
 
 const router = Router();
-
 const userRepository = new UserRepositoryImpl();
 const bcryptService = new BcryptService();
 const jwtService = new JWTService();
@@ -31,7 +30,7 @@ router.post('/login', async (req: Request, res: Response) => {
     return res.status(200).json(ResponseFormatter.success('Login successful', {
       token,
       user: {
-        userId: user?.id,
+        userId: user?._id,
         username: user?.username,
         role: user?.role,
       },

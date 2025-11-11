@@ -1,12 +1,22 @@
+// src/usecases/product/GetProductUseCase.ts
 import { IProductRepository } from "../../interfaces/repositories/IProductRepository";
 import { Product } from "../../entities/Product";
+
+export interface GetProductsInput {
+  page: number;
+  limit: number;
+  search?: string;
+}
 
 export class GetProductUseCase {
   constructor(private productRepo: IProductRepository) {}
 
-  async execute(productId: string): Promise<Product> {
-    const product = await this.productRepo.findById(productId);
-    if (!product) throw new Error("Product not found");
-    return product;
+  async execute({ page, limit, search }: GetProductsInput): Promise<{ products: Product[]; total: number }> {
+    return this.productRepo.findAll(page, limit, search);
   }
+
+  async getById(productId:any ): Promise<Product | null> {
+    return this.productRepo.findById(productId);
+  }
+
 }

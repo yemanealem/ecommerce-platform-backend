@@ -1,32 +1,33 @@
 import { IProductRepository } from "../../interfaces/repositories/IProductRepository";
 import { Product } from "../../entities/Product";
-import { ProductValidation } from "../../utils/product.validation";
+import { ProductModel } from "../db/models/ProductModel";
 
-export class CreateProductUseCase {
-  constructor(private productRepo: IProductRepository) {}
+export class ProductRepositoryImpl implements IProductRepository {
+  async create(product: Product): Promise<Product> {
+    const created = await ProductModel.create(product);
+    return created.toObject() as Product;
+  }
 
-  async execute(data: {
-    name: string;
-    description: string;
-    price: number;
-    stock: number;
-    category: string;
-    userId: string;
-  }): Promise<Product> {
-    ProductValidation.validateName(data.name);
-    ProductValidation.validateDescription(data.description);
-    ProductValidation.validatePrice(data.price);
-    ProductValidation.validateStock(data.stock);
+  async update(productId: string, data: Partial<Product>): Promise<Product | null> {
+    const updated = await ProductModel.findByIdAndUpdate(productId, data, { new: true });
+    return updated ? (updated.toObject() as Product) : null;
+  }
 
-    const product = new Product(
-      data.name,
-      data.description,
-      data.price,
-      data.stock,
-      data.category,
-      data.userId
-    );
+  async delete(productId: string): Promise<void> {
+    await ProductModel.findByIdAndDelete(productId);
+  }
 
-    return this.productRepo.create(product);
+  async findById(productId: string): Promise<Product | null> {
+    const product = await ProductModel.findById(productId);
+    return product ? (product.toObject() as Product) : null;
+  }
+
+  async findAll(page: number, limit: number, search?: string): Promise<{ products: Product[]; total: number }> {
+    const query = search ? { name: { $regex: search, $options: "i" } } : {};
+    const products = await ProductModel.find(query)
+      .skip((page - 1) * limit)
+      .limit(limit);
+    const total = await ProductModel.countDocuments(query);
+    return { products: products.map(p => p.toObject() as Product), total };
   }
 }
