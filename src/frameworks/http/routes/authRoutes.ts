@@ -5,7 +5,7 @@ import { UserRepositoryImpl } from '../../repositories/UserRepositoryImpl';
 import { BcryptService } from '../../services/BcryptService';
 import { JWTService } from '../../services/JWTService';
 import { validateLoginInput, validateRegisterInput } from '../../../utils/Validation';
-import { ResponseFormatter } from '../../../utils/ResponseFormatter';
+import { ResponseFormatter } from '../../../utils/BasicResponseFormatter';
 
 const router = Router();
 
