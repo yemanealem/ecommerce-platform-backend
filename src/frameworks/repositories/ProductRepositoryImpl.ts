@@ -2,7 +2,7 @@ import { IProductRepository } from "../../interfaces/repositories/IProductReposi
 import { Product } from "../../entities/Product";
 import { ProductModel } from "../db/models/ProductModel";
 
-export class MongoProductRepository implements IProductRepository {
+export class ProductRepositoryImpl implements IProductRepository {
   async create(product: Product): Promise<Product> {
     const created = await ProductModel.create(product);
     return created.toObject() as Product;

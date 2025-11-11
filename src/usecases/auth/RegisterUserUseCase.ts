@@ -1,7 +1,7 @@
 import { IUserRepository } from "../../interfaces/repositories/IUserRepository";
 import { BcryptService } from "../../frameworks/services/BcryptService";
 import { User } from "../../entities/User";
-import { UserRole } from "../../entities/enums/UserRole";
+import { UserRole } from "../../entities/enums";
 
 interface RegisterInput {
   username: string;
@@ -28,7 +28,7 @@ export class RegisterUserUseCase {
 
     const user = new User(input.username, input.email, hashedPassword, UserRole.USER);
 
-    await this.userRepository.save(user);
+    await this.userRepository.create(user);
 
     return user;
   }

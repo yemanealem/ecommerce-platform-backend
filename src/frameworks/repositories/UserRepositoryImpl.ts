@@ -2,7 +2,7 @@ import { IUserRepository } from "../../interfaces/repositories/IUserRepository";
 import { User } from "../../entities/User";
 import { UserModel } from "../db/models/UserModel";
 
-export class MongoUserRepository implements IUserRepository {
+export class UserRepositoryImpl implements IUserRepository {
   async create(user: User): Promise<User> {
     const created = await UserModel.create(user);
     return created.toObject() as User;

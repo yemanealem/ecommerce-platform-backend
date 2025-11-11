@@ -2,7 +2,7 @@ import { IOrderRepository } from "../../interfaces/repositories/IOrderRepository
 import { Order } from "../../entities/Order";
 import { OrderModel } from "../db/models/OrderModel";
 
-export class MongoOrderRepository implements IOrderRepository {
+export class OrderRepositoryImpl implements IOrderRepository {
   async create(order: Order): Promise<Order> {
     const created = await OrderModel.create(order);
     return created.toObject() as Order;

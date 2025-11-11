@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./frameworks/db/mongo";
+import authRoutes from './frameworks/http/routes/authRoutes';
+
 
 dotenv.config();
 
@@ -10,6 +12,7 @@ connectDB();
 
 app.use(express.json());
 
+app.use('/auth', authRoutes);
 app.get("/", (req, res) => {
   res.send("Server is running with MongoDB connection!");
 });
