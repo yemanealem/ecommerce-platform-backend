@@ -1,7 +1,6 @@
-// src/frameworks/http/middlewares/AuthMiddleware.ts
 import { Request, Response, NextFunction } from "express";
 import { JWTService } from "../../services/JWTService";
-import { UserRole } from "../../../entities/enums";
+import { UserRole } from "../../../entities/enum/UserRole";
 
 export interface AuthRequest extends Request {
   user?: { userId: string; username: string; role: string };

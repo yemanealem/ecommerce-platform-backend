@@ -1,5 +1,5 @@
 import { Schema, model, Document } from "mongoose";
-import { OrderStatus } from "../../../entities/enums";
+import { OrderStatus } from "../../../entities/enum/OrderStatus";
 
 export interface IOrderItem {
   productId: string;

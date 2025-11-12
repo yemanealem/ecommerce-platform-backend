@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { requireAuth, requireRole } from "../middlewares/AuthMiddleware";
-import { UserRole } from "../../../entities/enums";
+import { UserRole } from "../../../entities/enum/UserRole";
 import { ProductRepositoryImpl } from "../../repositories/ProductRepositoryImpl";
 import { CreateProductUseCase, CreateProductInput } from "../../../usecases/product/CreateProductUseCase";
 import { GetProductUseCase } from "../../../usecases/product/GetProductUseCase";

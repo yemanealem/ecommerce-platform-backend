@@ -1,6 +1,6 @@
 import { IProductRepository } from "../../interfaces/repositories/IProductRepository";
 import { Product } from "../../entities/Product";
-import { ProductValidation } from "../../utils/product.validation";
+import { ProductValidation } from "../../utils/ProductValidation";
 
 export interface UpdateProductInput {
   name?: string;

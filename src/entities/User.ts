@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { UserRole } from './enums';
+import { UserRole } from "./enum/UserRole";
+import { OrderStatus } from "./enum/OrderStatus";
 
 export class User {
   id: string; 

@@ -4,7 +4,7 @@ import { RegisterUserUseCase } from '../../../usecases/auth/RegisterUserUseCase'
 import { UserRepositoryImpl } from '../../repositories/UserRepositoryImpl';
 import { BcryptService } from '../../services/BcryptService';
 import { JWTService } from '../../services/JWTService';
-import { validateLoginInput, validateRegisterInput } from '../../../utils/Validation';
+import { validateLoginInput, validateRegisterInput } from '../../../utils/AuthValidation';
 import { ResponseFormatter } from '../../../utils/BasicResponseFormatter';
 
 const router = Router();

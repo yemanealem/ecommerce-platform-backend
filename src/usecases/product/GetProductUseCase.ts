@@ -1,4 +1,3 @@
-// src/usecases/product/GetProductUseCase.ts
 import { IProductRepository } from "../../interfaces/repositories/IProductRepository";
 import { Product } from "../../entities/Product";
 

@@ -1,7 +1,7 @@
 import { IOrderRepository } from "../../interfaces/repositories/IOrderRepository";
 import { IProductRepository } from "../../interfaces/repositories/IProductRepository";
 import { Order, OrderItem } from "../../entities/Order";
-import { OrderStatus } from "../../entities/enums";
+import { OrderStatus } from "../../entities/enum/OrderStatus";
 import mongoose from "mongoose";
 
 export interface PlaceOrderInput {

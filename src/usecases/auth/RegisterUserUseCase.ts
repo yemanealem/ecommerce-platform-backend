@@ -1,7 +1,7 @@
 import { IUserRepository } from "../../interfaces/repositories/IUserRepository";
 import { BcryptService } from "../../frameworks/services/BcryptService";
 import { User } from "../../entities/User";
-import { UserRole } from "../../entities/enums";
+import { UserRole } from "../../entities/enum/UserRole";
 
 interface RegisterInput {
   username: string;

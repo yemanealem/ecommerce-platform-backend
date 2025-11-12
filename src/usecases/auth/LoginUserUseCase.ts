@@ -25,7 +25,7 @@ export class LoginUserUseCase {
     if (!isPasswordValid) throw new Error("Invalid credentials");
 
     const token = this.jwtService.generateToken({
-      userId: user._id,
+      userId:(user as any).id || (user as any)._id,
       username: user.username,
       role: user.role
     });

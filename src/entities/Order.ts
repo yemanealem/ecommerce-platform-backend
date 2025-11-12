@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { OrderStatus } from './enums';
+import { OrderStatus } from './enum/OrderStatus';
 
 export interface OrderItem {
   productId: string;
@@ -20,6 +20,6 @@ export class Order {
     this.products = products;
     this.description = description;
     this.status = OrderStatus.PENDING;
-    this.totalPrice = 0; // will calculate in usecase
+    this.totalPrice = 0; 
   }
 }
