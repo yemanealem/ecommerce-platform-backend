@@ -4,9 +4,22 @@ import { ProductModel } from "../db/models/ProductModel";
 
 export class ProductRepositoryImpl implements IProductRepository {
   async create(product: Product): Promise<Product> {
-    const created = await ProductModel.create(product);
+    // const created = await ProductModel.create(product);
+    // return created.toObject() as Product;
+    
+     const created = await ProductModel.create({
+      _id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      stock: product.stock,
+      category: product.category,
+      userId: product.userId,
+    });
     return created.toObject() as Product;
   }
+
+  
 
   async update(productId: string, data: Partial<Product>): Promise<Product | null> {
     const updated = await ProductModel.findByIdAndUpdate(productId, data, { new: true });

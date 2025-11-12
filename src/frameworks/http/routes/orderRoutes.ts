@@ -1,4 +1,3 @@
-// src/frameworks/http/routes/orderRoutes.ts
 import { Router, Request, Response } from "express";
 import { requireAuth, requireRole } from "../middlewares/AuthMiddleware";
 import { UserRole } from "../../../entities/enums";
