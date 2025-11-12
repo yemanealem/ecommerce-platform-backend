@@ -26,23 +26,23 @@ JWT_SECRET=<your-secret-key>
 The server will start on http://localhost:5000.
 
 
-echnology Stack
+Technology Stack
 
-Node.js: Backend runtime
+    Node.js: Backend runtime
 
-TypeScript: Type safety and better code structure
+    TypeScript: Type safety and better code structure
 
-Express.js: REST API framework
+    Express.js: REST API framework
 
-MongoDB: Database for users, products, and orders
+    MongoDB: Database for users, products, and orders
 
-Mongoose: ODM for MongoDB
+    Mongoose: ODM for MongoDB
 
-JWT: Authentication and authorization
+    JWT: Authentication and authorization
 
-UUID: Unique identifiers for entities
+    UUID: Unique identifiers for entities
 
-dotenv: Environment variable management
+    dotenv: Environment variable management
 
 
 
