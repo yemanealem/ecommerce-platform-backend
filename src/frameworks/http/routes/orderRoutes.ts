@@ -30,4 +30,33 @@ router.post("/", requireAuth(), requireRole([UserRole.USER]), async (req: Reques
   }
 });
 
+
+router.get(
+  "/",
+  requireAuth(),
+  async (req: Request, res: Response) => {
+    try {
+      const user = (req as any).user;
+      if (!user) return res.status(401).json(ResponseFormatter.error("Unauthorized"));
+
+      const orders = await orderRepo.findByUserId(user.userId);
+
+      const summary = orders.map(order => ({
+        id: (order as any).id || (order as any)._id,
+        status: order.status,
+        totalPrice: order.totalPrice,
+        products:order.products,
+        createdAt: (order as any).createdAt,
+      }));
+
+      res.status(200).json(ResponseFormatter.success("Orders retrieved successfully", summary));
+    } catch (err: any) {
+      console.error("Error retrieving orders:", err);
+      res.status(500).json(ResponseFormatter.error("Internal server error"));
+    }
+  }
+);
+
+
+
 export default router;
