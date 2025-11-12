@@ -1,7 +1,9 @@
+import { ApiError } from './../../utils/ApiError';
 import { IUserRepository } from "../../interfaces/repositories/IUserRepository";
 import { BcryptService } from "../../frameworks/services/BcryptService";
 import { User } from "../../entities/User";
 import { UserRole } from "../../entities/enum/UserRole";
+import {ApiError} from "../../utils/ApiError"
 
 interface RegisterInput {
   username: string;
@@ -20,9 +22,10 @@ export class RegisterUserUseCase {
       input.email,
       input.username
     );
-    if (existingUser) {
-      throw new Error("Email or username already exists");
-    }
+
+   if (existingUser) {
+  throw new ApiError(400, "Email or username already exists", ["Email or username already exists"]);
+}
 
     const hashedPassword = await this.bcryptService.hashPassword(input.password);
 

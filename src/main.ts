@@ -4,6 +4,8 @@ import connectDB from "./frameworks/db/mongo";
 import authRoutes from './frameworks/http/routes/authRoutes';
 import productRoute from './frameworks/http/routes/productRoutes';
 import orderRoute from './frameworks/http/routes/orderRoutes';
+import { errorHandler } from "./frameworks/http/middlewares/ErrorMiddleware";
+
 
 dotenv.config();
 const app = express();
@@ -15,6 +17,8 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/products', productRoute);
 app.use('/orders',orderRoute);
+app.use(errorHandler);
+
 
 app.get("/", (req, res) => {
   res.send("Server is running with MongoDB connection!");
